@@ -17,11 +17,13 @@ public class ApplicationFramework {
     }
     public void initialize(){
         MainView.getInstance().setVisible(true);
+        game.Run();
     }
     public static ApplicationFramework getInstance(){
         if(instance==null){
             instance = new ApplicationFramework();
-            instance.game=new Game();
+            instance.game = new Game();
+            instance.game.addSubscriber(MainView.getInstance());
         }
         return instance;
     }

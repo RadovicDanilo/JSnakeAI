@@ -13,6 +13,14 @@ public abstract class Agent {
     public void GeneratePath(){
 
     }
+    public void Wait(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public ArrayList<Direction> getDirectionsToApple() {
         return directionsToApple;
@@ -20,5 +28,13 @@ public abstract class Agent {
 
     public void setDirectionsToApple(ArrayList<Direction> directionsToApple) {
         this.directionsToApple = directionsToApple;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }
