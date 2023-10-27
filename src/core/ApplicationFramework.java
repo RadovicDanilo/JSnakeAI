@@ -5,8 +5,8 @@ import model.game.Game;
 import view.MainView;
 
 public class ApplicationFramework {
-    public final int height = 20;
-    public final int width = 20;
+    public final int height = 10;
+    public final int width = 10;
 
     private static ApplicationFramework instance;
     private Game game;

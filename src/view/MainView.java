@@ -34,7 +34,7 @@ public class MainView extends JFrame implements ISubscriber {
     }
     private JPanel generateBoardJPanel(){
         JPanel panel = new JPanel();
-        GridLayout gl = new GridLayout(20, 20);
+        GridLayout gl = new GridLayout(height, width);
         gl.setHgap(2);
         gl.setVgap(2);
         panel.setLayout(gl);

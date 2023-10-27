@@ -11,9 +11,12 @@ import java.util.random.RandomGenerator;
 public class Game implements IPublisher {
     private final int height = ApplicationFramework.getInstance().height;
     private final int width = ApplicationFramework.getInstance().width;
-    private int[][] board;
+    private int[][] board;//TODO you can remove this and keep the sanake + apple + w + h because they are enough
     private ArrayList<Coordinates> snake;
     private ArrayList<ISubscriber> subscribers = new ArrayList<>();
+    private Coordinates appleCoordinate;
+    private Coordinates headCoordinate = new Coordinates(2,0);
+    private boolean isRunning = true;
 
     public Game() {
         board = new int[height][width];
@@ -35,11 +38,13 @@ public class Game implements IPublisher {
     }
     public void Run(){
         ApplicationFramework.getInstance().getAgent().GeneratePath();
-        for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()){
-            move(d);
-            ApplicationFramework.getInstance().getAgent().Wait();
-
+        while (isRunning) {
+            for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()){
+                move(d);
+                ApplicationFramework.getInstance().getAgent().Wait();
+            }
         }
+
     }
     public void GenerateApple(){
         boolean canGenerate = false;
@@ -52,19 +57,26 @@ public class Game implements IPublisher {
             }
         }
         if(!canGenerate){
-            notifySubscribers(Notifications.GAME_WON);
+            EndGame(Notifications.GAME_WON);
             return;
         }
         while(true){
             int x = RandomGenerator.getDefault().nextInt(height);
             int y = RandomGenerator.getDefault().nextInt(width);
             if(!snake.contains(new Coordinates(x,y))){
+                appleCoordinate = new Coordinates(x,y);
                 board[x][y]=2;
                 break;
             }
         }
         //generat a path
     }
+
+    private void EndGame(Notifications notifications) {
+        isRunning=false;
+        notifySubscribers(Notifications.GAME_LOST);
+    }
+
 
     public void move(Direction direction) {
         Coordinates head = new Coordinates(0,0);
@@ -82,12 +94,8 @@ public class Game implements IPublisher {
             case DOWN ->
                     head = new Coordinates(snake.get(snake.size()-1).getX() + 1, snake.get(snake.size()-1).getY());
         }
-        if(snake.contains(head)||
-                head.getX()< 0 ||
-                head.getY()< 0 ||
-                head.getX() > height -1||
-                head.getY() > width -1){
-            endGame();
+        if((snake.contains(head) && head!=snake.get(0))|| head.getX()< 0 || head.getY()< 0 || head.getX() == height || head.getY() == width ){
+            EndGame(Notifications.GAME_LOST);
             return;
         }
         if(board[head.getX()][head.getY()]==0){
@@ -97,30 +105,14 @@ public class Game implements IPublisher {
             snake.remove(0);
             notifySubscribers(Notifications.UPDATE_UI);
         }
-        if(board[head.getX()][head.getY()]==1){
-            endGame();
-            return;
-        }
         if(board[head.getX()][head.getY()]==2){
             board[head.getX()][head.getY()] = 1;
             snake.add(head);
             GenerateApple();
             notifySubscribers(Notifications.UPDATE_UI);
         }
+        headCoordinate = head;
     }
-
-    private void endGame() {
-        notifySubscribers(Notifications.GAME_LOST);
-    }
-
-    public int[][] getBoard() {
-        return this.board;
-    }
-
-    public ArrayList<Coordinates> getSnake() {
-        return snake;
-    }
-
     @Override
     public void addSubscriber(ISubscriber sub) {
         if(sub==null)
@@ -140,5 +132,34 @@ public class Game implements IPublisher {
         for(ISubscriber sub: subscribers){
             sub.update(notification);
         }
+    }
+    public int[][] getBoard() {
+        return this.board;
+    }
+    public ArrayList<Coordinates> getSnake() {
+        return snake;
+    }
+    public Coordinates getAppleCoordinate() {
+        return appleCoordinate;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public ArrayList<ISubscriber> getSubscribers() {
+        return subscribers;
+    }
+
+    public Coordinates getHeadCoordinate() {
+        return headCoordinate;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }
