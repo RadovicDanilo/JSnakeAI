@@ -63,7 +63,7 @@ public class MainView extends JFrame implements ISubscriber {
         if(!(notification instanceof Notifications))
             return;
         if(notification==Notifications.UPDATE_UI){
-            System.out.println(notification);
+            //System.out.println(notification);
             instance.getContentPane().removeAll();
             instance.getContentPane().add(generateBoardJPanel());
             instance.validate();

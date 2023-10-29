@@ -15,7 +15,7 @@ public abstract class Agent {
     }
     public void Wait(){
         try {
-            Thread.sleep(6);
+            Thread.sleep(50);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

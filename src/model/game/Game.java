@@ -37,8 +37,8 @@ public class Game implements IPublisher {
         GenerateApple();
     }
     public void Run(){
-        ApplicationFramework.getInstance().getAgent().GeneratePath();
         while (isRunning) {
+            ApplicationFramework.getInstance().getAgent().GeneratePath();
             for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()){
                 move(d);
                 ApplicationFramework.getInstance().getAgent().Wait();
@@ -69,20 +69,19 @@ public class Game implements IPublisher {
                 break;
             }
         }
-        //generat a path
     }
 
     private void EndGame(Notifications notifications) {
         isRunning=false;
-        notifySubscribers(Notifications.GAME_LOST);
+        notifySubscribers(notifications);
     }
 
 
     public void move(Direction direction) {
         Coordinates head = new Coordinates(0,0);
-        System.out.println("[INFO] snake size"+snake.size());
-        System.out.println("[INFO] sanke head at ("+snake.get(snake.size()-1).getX()+","+snake.get(snake.size()-1).getY()+")");
-        System.out.println("[INFO] Snake moves " + direction);
+//        System.out.println("[INFO] snake size"+ snake.size());
+//        System.out.println("[INFO] sanke head at ("+ snake.get(snake.size()-1).getX()+","+snake.get(snake.size()-1).getY()+")");
+//        System.out.println("[INFO] Snake moves " + direction);
 
         switch (direction) {
             case LEFT ->
@@ -98,20 +97,23 @@ public class Game implements IPublisher {
             EndGame(Notifications.GAME_LOST);
             return;
         }
+
         if(board[head.getX()][head.getY()]==0){
             board[head.getX()][head.getY()] = 1;
             snake.add(head);
             board[snake.get(0).getX()][snake.get(0).getY()] = 0;
             snake.remove(0);
             notifySubscribers(Notifications.UPDATE_UI);
+            headCoordinate = head;
         }
         if(board[head.getX()][head.getY()]==2){
             board[head.getX()][head.getY()] = 1;
             snake.add(head);
             GenerateApple();
             notifySubscribers(Notifications.UPDATE_UI);
+            headCoordinate = head;
         }
-        headCoordinate = head;
+
     }
     @Override
     public void addSubscriber(ISubscriber sub) {
