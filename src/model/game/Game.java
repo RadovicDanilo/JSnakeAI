@@ -39,6 +39,10 @@ public class Game implements IPublisher {
     public void Run(){
         while (isRunning) {
             ApplicationFramework.getInstance().getAgent().GeneratePath();
+            if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size()==0){
+                isRunning=false;
+                break;
+            }
             for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()){
                 move(d);
                 ApplicationFramework.getInstance().getAgent().Wait();

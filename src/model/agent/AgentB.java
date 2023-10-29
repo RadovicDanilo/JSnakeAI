@@ -25,7 +25,9 @@ public class AgentB extends Agent {
     public ArrayList<Direction> getDirectionsToApple(ArrayList<ArrayList<Direction>> directionsToApple){
 
         System.out.println("[INFO] ARRAY SIZE = " + directionsToApple.size());
-
+        if(directionsToApple.size()==0){
+            return new ArrayList<>();
+        }
         for (int i = 0; i < directionsToApple.size(); i++) {
             ArrayList<Coordinates> currentSnake = useDirectionsOnSnake(snake, directionsToApple.get(i));
             if(currentSnake.get(currentSnake.size()-1).equals(game.getAppleCoordinate()) && hasHamiltonianCycle(currentSnake)){
