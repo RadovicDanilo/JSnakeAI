@@ -24,6 +24,10 @@ public class Game implements IPublisher {
         snake.add(new Coordinates(0,0));
         snake.add(new Coordinates(1,0));
         snake.add(new Coordinates(2,0));
+        snake.add(new Coordinates(3,0));
+        snake.add(new Coordinates(4,0));
+        snake.add(new Coordinates(5,0));
+
 
         for (int i = 0; i < height; i++) { //TODO. Is this necessary?
             for (int j = 0; j < width; j++) {
@@ -41,6 +45,7 @@ public class Game implements IPublisher {
             ApplicationFramework.getInstance().getAgent().GeneratePath();
             if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size()==0){
                 isRunning=false;
+                EndGame(Notifications.GAME_LOST);
                 break;
             }
             for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()){
