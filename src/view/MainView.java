@@ -46,7 +46,12 @@ public class MainView extends JFrame implements ISubscriber {
                     square.setBackground(Color.DARK_GRAY);
                 }
                 if (ApplicationFramework.getInstance().getGame().getBoard()[i][j] == 1) {
-                    square.setBackground(Color.GREEN);
+                    if(ApplicationFramework.getInstance().getGame().getHeadCoordinate().getX()==i&&ApplicationFramework.getInstance().getGame().getHeadCoordinate().getY()==j){
+                        square.setBackground(Color.BLACK);
+                    }else{
+                        square.setBackground(Color.GREEN);
+
+                    }
                 }
                 if (ApplicationFramework.getInstance().getGame().getBoard()[i][j] == 2) {
                     square.setBackground(Color.RED);

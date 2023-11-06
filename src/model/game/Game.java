@@ -24,9 +24,9 @@ public class Game implements IPublisher {
         snake.add(new Coordinates(0,0));
         snake.add(new Coordinates(1,0));
         snake.add(new Coordinates(2,0));
-        snake.add(new Coordinates(3,0));
-        snake.add(new Coordinates(4,0));
-        snake.add(new Coordinates(5,0));
+//        snake.add(new Coordinates(3,0));
+//        snake.add(new Coordinates(4,0));
+//        snake.add(new Coordinates(5,0));
 
 
         for (int i = 0; i < height; i++) { //TODO. Is this necessary?
@@ -45,6 +45,7 @@ public class Game implements IPublisher {
             ApplicationFramework.getInstance().getAgent().GeneratePath();
             if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size()==0){
                 isRunning=false;
+
                 EndGame(Notifications.GAME_LOST);
                 break;
             }
@@ -81,6 +82,7 @@ public class Game implements IPublisher {
     }
 
     private void EndGame(Notifications notifications) {
+        System.out.println(notifications);
         isRunning=false;
         notifySubscribers(notifications);
     }
@@ -88,21 +90,19 @@ public class Game implements IPublisher {
 
     public void move(Direction direction) {
         Coordinates head = new Coordinates(0,0);
-//        System.out.println("[INFO] snake size"+ snake.size());
-//        System.out.println("[INFO] sanke head at ("+ snake.get(snake.size()-1).getX()+","+snake.get(snake.size()-1).getY()+")");
-//        System.out.println("[INFO] Snake moves " + direction);
 
         switch (direction) {
-            case LEFT ->
-                    head = new Coordinates(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY() - 1);
-            case RIGHT ->
-                    head = new Coordinates(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY() + 1);
-            case UP ->
-                    head = new Coordinates(snake.get(snake.size() - 1).getX() - 1, snake.get(snake.size() - 1).getY());
-            case DOWN ->
-                    head = new Coordinates(snake.get(snake.size()-1).getX() + 1, snake.get(snake.size()-1).getY());
+            case LEFT -> head = new Coordinates(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY() - 1);
+            case RIGHT -> head = new Coordinates(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY() + 1);
+            case UP -> head = new Coordinates(snake.get(snake.size() - 1).getX() - 1, snake.get(snake.size() - 1).getY());
+            case DOWN -> head = new Coordinates(snake.get(snake.size()-1).getX() + 1, snake.get(snake.size()-1).getY());
         }
-        if((snake.contains(head) && head!=snake.get(0))|| head.getX()< 0 || head.getY()< 0 || head.getX() == height || head.getY() == width ){
+        if((snake.contains(head) && !head.equals(snake.get(0))) || head.getX()< 0 || head.getY()< 0 || head.getX() == height || head.getY() == width ){
+            System.out.println("SNEKS FIRTS HEAD"+headCoordinate.getX()+" "+headCoordinate.getY());
+            System.out.println(direction);
+            System.out.println("SNEK MOVED HEAD"+head.getX()+" "+head.getY());
+            System.out.println("SNEK HIT HEAD");
+            System.out.println("SNEKS REAL tail "+snake.get(0).getX()+" "+snake.get(0).getY());
             EndGame(Notifications.GAME_LOST);
             return;
         }
@@ -112,15 +112,15 @@ public class Game implements IPublisher {
             snake.add(head);
             board[snake.get(0).getX()][snake.get(0).getY()] = 0;
             snake.remove(0);
-            notifySubscribers(Notifications.UPDATE_UI);
             headCoordinate = head;
+            notifySubscribers(Notifications.UPDATE_UI);
         }
         if(board[head.getX()][head.getY()]==2){
             board[head.getX()][head.getY()] = 1;
             snake.add(head);
             GenerateApple();
-            notifySubscribers(Notifications.UPDATE_UI);
             headCoordinate = head;
+            notifySubscribers(Notifications.UPDATE_UI);
         }
 
     }

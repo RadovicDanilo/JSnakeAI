@@ -6,57 +6,75 @@ import model.game.Direction;
 import model.game.Game;
 
 import java.util.ArrayList;
-//TODO optimise all of this.
-public class AgentC extends Agent {
+import java.util.Collection;
+
+public class AgentD extends Agent {
     private final Direction[] allDirections = {Direction.LEFT,Direction.RIGHT,Direction.UP,Direction.DOWN};
     private Game game = ApplicationFramework.getInstance().getGame();
     private ArrayList<Coordinates> snake = ApplicationFramework.getInstance().getGame().getSnake();
     private ArrayList<Direction> directionsToApple = new ArrayList<>();
     private ArrayList<Direction> directionsToTail  = new ArrayList<>();
-    private ArrayList<Direction> directionsToTailReal = new ArrayList<>();
 
     @Override
     public void GeneratePath() {
         snake = ApplicationFramework.getInstance().getGame().getSnake();
-        ArrayList<ArrayList<Direction>> listOfDirection = new ArrayList<ArrayList<Direction>>();
+        ArrayList<ArrayList<Direction>> listOfDirection = new ArrayList<>();
         listOfDirection.add(new ArrayList<>());
-        this.directionsToApple = getDirectionsToApple(listOfDirection);
-
+        directionsToApple = getDirectionsToApple(listOfDirection);
     }
 
-    public ArrayList<Direction> getDirectionsToApple(ArrayList<ArrayList<Direction>> directionsToApple){
-
-        if(directionsToApple.size()==0){
-            this.directionsToApple = new ArrayList<>();
-            Direction d = directionsToTail.get(0);
-            this.directionsToApple.add(d);
-            directionsToTail.remove(0);
-            return this.directionsToApple;
+    public ArrayList<Direction> getDirectionsToApple(ArrayList<ArrayList<Direction>> listOfDirectionsToApple){
+        System.out.println("DIR TO APPLE "+listOfDirectionsToApple.size());
+        if(listOfDirectionsToApple.size()==0){
+            directionsToApple = new ArrayList<>();
+            ArrayList<ArrayList<Direction>> directionsToTailTempo = new ArrayList<>();
+            directionsToApple.add(directionsToTail.get(0));
+            return directionsToApple;
         }
-        for (int i = 0; i < directionsToApple.size(); i++) {
-            ArrayList<Coordinates> currentSnake = useDirectionsOnSnake(snake, directionsToApple.get(i));
-            if(currentSnake.get(currentSnake.size()-1).equals(game.getAppleCoordinate())){
-                if(hasPathToTail(currentSnake)){
-                    this.directionsToTailReal=directionsToTail;
-                    return directionsToApple.get(i);
-                }
-
+        for (int i = 0; i < listOfDirectionsToApple.size(); i++) {
+            ArrayList<Coordinates> currentSnake = useDirectionsOnSnake(snake, listOfDirectionsToApple.get(i));
+            if(currentSnake.get(currentSnake.size()-1).equals(game.getAppleCoordinate())&&hasPathToTail(currentSnake)){
+                this.directionsToTail.addAll(getDirectionsFromTailToHead(currentSnake));
+                return listOfDirectionsToApple.get(i);
             }
         }
         ArrayList<ArrayList<Direction>> directionsToAppleTemp = new ArrayList<>();
-        for(int i = 0; i < directionsToApple.size(); i++) {
-            ArrayList<Coordinates> tempSnake = useDirectionsOnSnake(game.getSnake(), directionsToApple.get(i));
+        for(int i = 0; i < listOfDirectionsToApple.size(); i++) {
+            ArrayList<Coordinates> tempSnake = useDirectionsOnSnake(game.getSnake(), listOfDirectionsToApple.get(i));
             for(Direction direction : allDirections){
                 if(isLegaMove(tempSnake, direction)){
-                    ArrayList<Direction> directionsTemp = (ArrayList<Direction>) directionsToApple.get(i).clone();
+                    ArrayList<Direction> directionsTemp = (ArrayList<Direction>) listOfDirectionsToApple.get(i).clone();
                     directionsTemp.add(direction);
                     directionsToAppleTemp.add(directionsTemp);
                 }
             }
         }
-        directionsToApple.removeIf(e ->(true));
+        listOfDirectionsToApple.removeIf(e ->(true));
         directionsToAppleTemp.removeIf(e ->(e.size()==0));
         return getDirectionsToApple(directionsToAppleTemp);
+    }
+
+    private Collection<Direction> getDirectionsFromTailToHead(ArrayList<Coordinates> currentSnake) {
+        ArrayList<Direction> tempDir = new ArrayList<>();
+        for (int i = 0; i < currentSnake.size()-1; i++) {
+            if (currentSnake.get(i).getX()+1==currentSnake.get(i+1).getX()&&
+                    currentSnake.get(i).getY()==currentSnake.get(i+1).getY()){
+                tempDir.add(Direction.DOWN);
+            }
+            if (currentSnake.get(i).getX()-1==currentSnake.get(i+1).getX()&&
+                    currentSnake.get(i).getY()==currentSnake.get(i+1).getY()){
+                tempDir.add(Direction.UP);
+            }
+            if (currentSnake.get(i).getX()==currentSnake.get(i+1).getX()&&
+                    currentSnake.get(i).getY()+1==currentSnake.get(i+1).getY()){
+                tempDir.add(Direction.RIGHT);
+            }
+            if (currentSnake.get(i).getX()==currentSnake.get(i+1).getX()&&
+                    currentSnake.get(i).getY()-1==currentSnake.get(i+1).getY()){
+                tempDir.add(Direction.LEFT);
+            }
+        }
+        return tempDir;
     }
 
     Coordinates tailCoordinates;
@@ -64,7 +82,9 @@ public class AgentC extends Agent {
         ArrayList<ArrayList<Direction>> listOfDirectionToTail = new ArrayList<>();
         listOfDirectionToTail.add(new ArrayList<>());
         tailCoordinates = currentSnake.get(0);
-        ArrayList<Direction> DirectionToTailTemp = getDirectionsToTail(listOfDirectionToTail, currentSnake);
+        ArrayList<Coordinates> tempSnake = (ArrayList<Coordinates>) currentSnake.clone();
+        tempSnake.add(game.getAppleCoordinate());
+        ArrayList<Direction> DirectionToTailTemp = getDirectionsToTail(listOfDirectionToTail, tempSnake);
         if(DirectionToTailTemp.size()==0){
             return false;
         }else {
@@ -105,7 +125,4 @@ public class AgentC extends Agent {
     }
 
 
-    public void setDirectionsToTailReal(ArrayList<Direction> directionsToTailReal) {
-        this.directionsToTailReal = directionsToTailReal;
-    }
 }
