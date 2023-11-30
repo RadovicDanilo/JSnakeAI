@@ -1,0 +1,14 @@
+731,64,64,BFSWithTailFollowing
+198,30,64,BFSWithTailFollowing
+348,44,64,BFSWithTailFollowing
+452,60,64,BFSWithTailFollowing
+632,58,64,BFSWithTailFollowing
+235,35,64,BFSWithTailFollowing
+320,37,64,BFSWithTailFollowing
+445,60,64,BFSWithTailFollowing
+221,35,64,BFSWithTailFollowing
+330,42,64,BFSWithTailFollowing
+798,62,64,BFSWithTailFollowing
+750,62,64,BFSWithTailFollowing
+780,60,64,BFSWithTailFollowing
+233,36,36,BFSWithTailFollowing
