@@ -7,5 +7,4 @@ public class Main {
 		main.setAgent(new BFSWithTailFollowing());
 		main.initialize();
 	}
-	
 }
