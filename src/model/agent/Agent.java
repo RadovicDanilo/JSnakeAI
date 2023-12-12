@@ -17,7 +17,7 @@ public abstract class Agent {
 	
 	public void Wait() {
 		try {
-			Thread.sleep(25);
+			Thread.sleep(100);
 		}catch(InterruptedException e) {
 			throw new RuntimeException(e);
 		}
@@ -35,6 +35,14 @@ public abstract class Agent {
 			snake.add(snake.get(snake.size() - 1).move(direction));
 		}
 		return snake;
+	}
+	
+	public int getHEIGHT() {
+		return HEIGHT;
+	}
+	
+	public int getWIDTH() {
+		return WIDTH;
 	}
 	
 	public ArrayList<Direction> getDirectionsToApple() {

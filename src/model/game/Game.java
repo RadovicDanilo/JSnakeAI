@@ -43,7 +43,6 @@ public class Game {
 				break;
 			}
 			for(Direction d : ApplicationFramework.getInstance().getAgent().getDirectionsToApple()) {
-				System.out.println("SNAKE MOVED: " + d);
 				move(d);
 				if(!isRunning)
 					break;

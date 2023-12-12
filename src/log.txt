@@ -10,3 +10,26 @@
 177,36,36,BFSWithTailFollowing
 256,36,36,BFSWithTailFollowing
 
+1756,100,100,BFSWithTailFollowing
+398,43,100,BFSWithTailFollowing
+240,31,100,BFSWithTailFollowing
+331,43,100,BFSWithTailFollowing
+658,62,100,BFSWithTailFollowing
+105,3,100,model.agent.SingleHamiltonianCycle@1507c3c3
+2369,100,100,model.agent.SingleHamiltonianCycle@138be0c6
+61,14,64,BFSWithTailFollowing
+200,30,64,BFSWithTailFollowing
+552,48,49,BFSWithTailFollowing
+306,35,64,BFSWithTailFollowing
+298,40,64,BFSWithTailFollowing
+654,64,64,BFSWithTailFollowing
+594,64,64,BFSWithTailFollowing
+205,30,64,BFSWithTailFollowing
+448,52,64,BFSWithTailFollowing
+509,62,64,BFSWithTailFollowing
+323,46,64,BFSWithTailFollowing
+260,36,64,BFSWithTailFollowing
+498,58,64,BFSWithTailFollowing
+154,25,64,BFSWithTailFollowing
+206,30,64,BFSWithTailFollowing
+631,64,64,BFSWithTailFollowing

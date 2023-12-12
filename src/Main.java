@@ -1,5 +1,6 @@
 import core.ApplicationFramework;
 import model.agent.BFSWithTailFollowing;
+import model.agent.SingleHamiltonianCycle;
 
 public class Main {
 	public static void main(String[] args) {

@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class MainView extends JFrame {
 	private static MainView instance;
+	private final MyPanel myPanel = new MyPanel();
 	private final int HEIGHT = ApplicationFramework.getInstance().HEIGHT;
 	private final int WIDTH = ApplicationFramework.getInstance().WIDTH;
 	
@@ -24,16 +25,17 @@ public class MainView extends JFrame {
 	}
 	
 	private void initialize() {
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		setSize(WIDTH * 40, HEIGHT * 40);
 		setLocationRelativeTo(null);
-		setMinimumSize(new Dimension(WIDTH * 40, HEIGHT * 40));
+		setSize(WIDTH * 60, HEIGHT * 60);
+		setMinimumSize(new Dimension(WIDTH * 60, HEIGHT * 60));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("JSnakeAI");
-		instance.getContentPane().add(generateBoardJPanel());
+		setLayout(new CardLayout());
+		add(myPanel);
+		//instance.getContentPane().add(generateBoardJPanel());
 	}
 	
-	private JPanel generateBoardJPanel() {//TODO make this look better
+	private JPanel generateBoardJPanel() {
 		JPanel panel = new JPanel();
 		GridLayout gl = new GridLayout(HEIGHT, WIDTH);
 		gl.setHgap(2);
@@ -64,8 +66,9 @@ public class MainView extends JFrame {
 	}
 	
 	public void update() {
-		instance.getContentPane().removeAll();
-		instance.getContentPane().add(generateBoardJPanel());
-		instance.validate();
+//		instance.getContentPane().removeAll();
+//		instance.getContentPane().add(generateBoardJPanel());
+//		instance.validate();
+		myPanel.repaint();
 	}
 }

@@ -18,21 +18,23 @@ public class BFSWithTailFollowing extends Agent {
 		snake = ApplicationFramework.getInstance().getGame().getSnake();
 		this.directionsToApple = findPathBFS();
 	}
-	
+	int maxSize = 10000;
 	public ArrayList<Direction> findPathBFS() {
 		ArrayList<ArrayList<Direction>> listOfDirectionsToApple = new ArrayList<>();
 		listOfDirectionsToApple.add(new ArrayList<>());
 		
-		
 		while(listOfDirectionsToApple.size() != 0) {
-			if(listOfDirectionsToApple.size() > 20000 && snake.size() > WIDTH) {
+			if(listOfDirectionsToApple.size() > maxSize && snake.size() > WIDTH) {
 				hasPathToTail(new ArrayList<>(), snake, false);
+				maxSize = 1000;
 				return pathToTail;
 			}
 			for(ArrayList<Direction> directions : listOfDirectionsToApple) {
 				ArrayList<Coordinate> currentSnake = useDirectionsOnSnake(snake, directions);
-				if(currentSnake.get(currentSnake.size() - 1).equals(game.getAppleCoordinate()) && (hasPathToTail(directions, snake, true)))
+				if(currentSnake.get(currentSnake.size() - 1).equals(game.getAppleCoordinate()) && (hasPathToTail(directions, snake, true))) {
+					maxSize = 5000;
 					return directions;
+				}
 			}
 			listOfDirectionsToApple = newListOfDirections(listOfDirectionsToApple, snake);
 		}
@@ -72,6 +74,7 @@ public class BFSWithTailFollowing extends Agent {
 		final Coordinate tail = snake.get(0);
 		
 		ArrayList<ArrayList<Direction>> listOfDirectionsToTail = new ArrayList<>();
+		ArrayList<ArrayList<Direction>> visitedNodes = new ArrayList<>();
 		listOfDirectionsToTail.add(new ArrayList<>());
 		
 		while(listOfDirectionsToTail.size() != 0) {

@@ -6,8 +6,8 @@ import view.MainView;
 
 public class ApplicationFramework {
 	private static ApplicationFramework instance;
-	public final int HEIGHT = 10;
-	public final int WIDTH = 10;
+	public final int HEIGHT = 8;
+	public final int WIDTH = 8;
 	private Game game;
 	private Agent agent;
 	
