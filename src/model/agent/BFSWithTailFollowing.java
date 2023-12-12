@@ -25,7 +25,7 @@ public class BFSWithTailFollowing extends Agent {
 		
 		
 		while(listOfDirectionsToApple.size() != 0) {
-			if(listOfDirectionsToApple.size() > 20000 && snake.size() > 5) {
+			if(listOfDirectionsToApple.size() > 20000 && snake.size() > WIDTH) {
 				hasPathToTail(new ArrayList<>(), snake, false);
 				return pathToTail;
 			}
@@ -77,7 +77,6 @@ public class BFSWithTailFollowing extends Agent {
 		while(listOfDirectionsToTail.size() != 0) {
 			for(ArrayList<Direction> directions : listOfDirectionsToTail) {
 				ArrayList<Coordinate> currentSnake = useDirectionsOnSnake(snake, directions);
-				System.out.println(tail + " " + currentSnake.get(currentSnake.size() - 1));
 				
 				if(currentSnake.get(currentSnake.size() - 1).equals(tail)) {
 					this.pathToTail = directions;

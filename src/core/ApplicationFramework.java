@@ -5,19 +5,14 @@ import model.game.Game;
 import view.MainView;
 
 public class ApplicationFramework {
-	public final int HEIGHT = 6;
-	public final int WIDTH = 6;
 	private static ApplicationFramework instance;
+	public final int HEIGHT = 10;
+	public final int WIDTH = 10;
 	private Game game;
 	private Agent agent;
 	
 	private ApplicationFramework() {
 	
-	}
-	
-	public void initialize() {
-		MainView.getInstance().setVisible(true);
-		game.Run();
 	}
 	
 	public static ApplicationFramework getInstance() {
@@ -26,6 +21,11 @@ public class ApplicationFramework {
 			instance.game = new Game();
 		}
 		return instance;
+	}
+	
+	public void initialize() {
+		MainView.getInstance().setVisible(true);
+		game.Run();
 	}
 	
 	public Game getGame() {

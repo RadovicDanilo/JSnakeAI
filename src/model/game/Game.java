@@ -12,9 +12,9 @@ import java.util.random.RandomGenerator;
 public class Game {
 	public final int HEIGHT = ApplicationFramework.getInstance().HEIGHT;
 	public final int WIDTH = ApplicationFramework.getInstance().WIDTH;
-	private int moves = 0;
 	private final ArrayList<Coordinate> board;
 	private final ArrayList<Coordinate> snake;
+	private int moves = 0;
 	private Coordinate appleCoordinate;
 	private Coordinate headCoordinate;
 	private boolean isRunning = true;

@@ -8,11 +8,19 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainView extends JFrame {
+	private static MainView instance;
 	private final int HEIGHT = ApplicationFramework.getInstance().HEIGHT;
 	private final int WIDTH = ApplicationFramework.getInstance().WIDTH;
-	private static MainView instance;
 	
 	private MainView() {
+	}
+	
+	public static MainView getInstance() {
+		if(instance == null) {
+			instance = new MainView();
+			instance.initialize();
+		}
+		return instance;
 	}
 	
 	private void initialize() {
@@ -23,14 +31,6 @@ public class MainView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("JSnakeAI");
 		instance.getContentPane().add(generateBoardJPanel());
-	}
-	
-	public static MainView getInstance() {
-		if(instance == null) {
-			instance = new MainView();
-			instance.initialize();
-		}
-		return instance;
 	}
 	
 	private JPanel generateBoardJPanel() {//TODO make this look better

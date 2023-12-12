@@ -1,5 +1,5 @@
 import core.ApplicationFramework;
-import model.agent.*;
+import model.agent.BFSWithTailFollowing;
 
 public class Main {
 	public static void main(String[] args) {

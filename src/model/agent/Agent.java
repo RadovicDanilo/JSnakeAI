@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class Agent {
 	public final int HEIGHT = ApplicationFramework.getInstance().HEIGHT;
 	public final int WIDTH = ApplicationFramework.getInstance().WIDTH;
-	private ArrayList<Direction> directionsToApple = new ArrayList<>();
+	private final ArrayList<Direction> directionsToApple = new ArrayList<>();
 	
 	public void GeneratePath() {
 	
@@ -17,7 +17,7 @@ public abstract class Agent {
 	
 	public void Wait() {
 		try {
-			Thread.sleep(250);
+			Thread.sleep(25);
 		}catch(InterruptedException e) {
 			throw new RuntimeException(e);
 		}
