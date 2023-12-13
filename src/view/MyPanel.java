@@ -32,7 +32,7 @@ public class MyPanel extends JPanel {
 			g2d.drawLine(snake.get(i).getX() * BLOCK_SIZE + BLOCK_SIZE_half, snake.get(i).getY() * BLOCK_SIZE + BLOCK_SIZE_half, snake.get(i + 1).getX() * BLOCK_SIZE + BLOCK_SIZE_half, snake.get(i + 1).getY() * BLOCK_SIZE + BLOCK_SIZE_half);
 		}
 		g2d.setColor(Color.RED);
-		Rectangle rectangle = new Rectangle(apple.getX() * BLOCK_SIZE, apple.getY() * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+		Rectangle rectangle = new Rectangle(apple.getX() * BLOCK_SIZE + 7, apple.getY() * BLOCK_SIZE+7, BLOCK_SIZE-14, BLOCK_SIZE-14);
 		g2d.fill(rectangle);
 	}
 }

@@ -33,3 +33,15 @@
 154,25,64,BFSWithTailFollowing
 206,30,64,BFSWithTailFollowing
 631,64,64,BFSWithTailFollowing
+1061,64,64,model.agent.SingleHamiltonianCycle@7d9d1a19
+299,42,64,BFSWithTailFollowing
+187,32,64,BFSWithTailFollowing
+356,45,64,BFSWithTailFollowing
+190,26,64,BFSWithTailFollowing
+665,56,64,BFSWithTailFollowing
+204,31,64,BFSWithTailFollowing
+603,64,64,BFSWithTailFollowing
+579,51,64,BFSWithTailFollowing
+253,34,36,BFSWithTailFollowing
+102,16,64,BFSWithTailFollowing
+225,32,64,BFSWithTailFollowing
