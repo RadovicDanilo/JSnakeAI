@@ -40,6 +40,7 @@ public class Game {
 		while(isRunning) {
 			ApplicationFramework.getInstance().getAgent().GeneratePath();
 			if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size() == 0) {
+				System.out.println("ZERO DIRECTION MAAAN");
 				EndGame("GAME_LOST");
 				break;
 			}
@@ -88,7 +89,7 @@ public class Game {
 		Coordinate head;
 		headCoordinate = snake.get(snake.size() - 1);
 		head = headCoordinate.move(direction);
-		if((snake.contains(head) && head != snake.get(0)) || !board.contains(head)) {
+		if((snake.contains(head) && !head.equals(snake.get(0))) || !board.contains(head)) {
 			isRunning = false;
 			EndGame("GAME_LOST");
 			return;

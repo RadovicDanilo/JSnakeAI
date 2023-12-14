@@ -16,16 +16,19 @@ public abstract class Agent {
 	}
 	
 	public void Wait() {
-//		try {
-//			Thread.sleep(50);
-//		}catch(InterruptedException e) {
-//			throw new RuntimeException(e);
-//		}
+		try {
+			Thread.sleep(80);
+		}catch(InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public boolean isLegaMove(ArrayList<Coordinate> snakeTemp, Direction direction) {
 		Coordinate head = snakeTemp.get(snakeTemp.size() - 1).move(direction);
-		return !(snakeTemp.contains(head) && snakeTemp.get(0) != head) && ApplicationFramework.getInstance().getGame().getBoard().contains(head);
+		if(snakeTemp.get(0).equals(head)) {
+			return false;
+		}
+		return !(snakeTemp.contains(head) || !ApplicationFramework.getInstance().getGame().getBoard().contains(head));
 	}
 	
 	public ArrayList<Coordinate> useDirectionsOnSnake(ArrayList<Coordinate> snakeTemp, ArrayList<Direction> directionArrayList) {

@@ -72,11 +72,6 @@ public class PertubatedHamiltonianCycle extends Agent {
 			ArrayList<Coordinate> tempSnake = useDirectionsOnSnake(snake, directions);
 			for(Direction direction : Direction.values()) {
 				if(!isLegaMove(tempSnake, direction)) {
-					System.out.println(tempSnake.get(0));
-					System.out.println(tempSnake.get(tempSnake.size()-1));
-					System.out.println(tempSnake.get(tempSnake.size()-1).move(direction));
-					System.out.println(direction);
-					System.out.println();
 					continue;
 				}
 				Coordinate lastHead = tempSnake.get(tempSnake.size() - 1);
