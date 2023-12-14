@@ -1,47 +1,31 @@
-233,36,36,BFSWithTailFollowing
-255,36,36,BFSWithTailFollowing
-174,36,36,BFSWithTailFollowing
-272,36,36,BFSWithTailFollowing
-254,36,36,BFSWithTailFollowing
-253,36,36,BFSWithTailFollowing
-186,36,36,BFSWithTailFollowing
-225,36,36,BFSWithTailFollowing
-244,36,36,BFSWithTailFollowing
-177,36,36,BFSWithTailFollowing
-256,36,36,BFSWithTailFollowing
+1033,64,64,model.agent.SingleHamiltonianCycle@4883b407
+911 ,64,64,model.agent.SingleHamiltonianCycle@4883b407
+1065,64,64,model.agent.SingleHamiltonianCycle@4883b407
+1065,64,64,model.agent.SingleHamiltonianCycle@4883b407
+940 ,64,64,model.agent.SingleHamiltonianCycle@4883b407
+1040,64,64,model.agent.SingleHamiltonianCycle@4883b407
+853 ,64,64,model.agent.SingleHamiltonianCycle@4883b407
+880 ,64,64,model.agent.SingleHamiltonianCycle@4883b407
+1096,64,64,model.agent.SingleHamiltonianCycle@4883b407
+936 ,64,64,model.agent.SingleHamiltonianCycle@4883b407
 
-1756,100,100,BFSWithTailFollowing
-398,43,100,BFSWithTailFollowing
-240,31,100,BFSWithTailFollowing
-331,43,100,BFSWithTailFollowing
-658,62,100,BFSWithTailFollowing
-105,3,100,model.agent.SingleHamiltonianCycle@1507c3c3
-2369,100,100,model.agent.SingleHamiltonianCycle@138be0c6
-61,14,64,BFSWithTailFollowing
-200,30,64,BFSWithTailFollowing
-552,48,49,BFSWithTailFollowing
-306,35,64,BFSWithTailFollowing
-298,40,64,BFSWithTailFollowing
-654,64,64,BFSWithTailFollowing
+833 ,64,64,PertubatedHamiltonianCycle
+1024,64,64,PertubatedHamiltonianCycle
+964 ,64,64,PertubatedHamiltonianCycle
+983 ,64,64,PertubatedHamiltonianCycle
+985 ,64,64,PertubatedHamiltonianCycle
+862 ,64,64,PertubatedHamiltonianCycle
+1131,64,64,PertubatedHamiltonianCycle
+1035,64,64,PertubatedHamiltonianCycle
+
 594,64,64,BFSWithTailFollowing
-205,30,64,BFSWithTailFollowing
-448,52,64,BFSWithTailFollowing
-509,62,64,BFSWithTailFollowing
-323,46,64,BFSWithTailFollowing
-260,36,64,BFSWithTailFollowing
-498,58,64,BFSWithTailFollowing
-154,25,64,BFSWithTailFollowing
-206,30,64,BFSWithTailFollowing
-631,64,64,BFSWithTailFollowing
-1061,64,64,model.agent.SingleHamiltonianCycle@7d9d1a19
-299,42,64,BFSWithTailFollowing
-187,32,64,BFSWithTailFollowing
-356,45,64,BFSWithTailFollowing
-190,26,64,BFSWithTailFollowing
-665,56,64,BFSWithTailFollowing
-204,31,64,BFSWithTailFollowing
 603,64,64,BFSWithTailFollowing
-579,51,64,BFSWithTailFollowing
-253,34,36,BFSWithTailFollowing
-102,16,64,BFSWithTailFollowing
-225,32,64,BFSWithTailFollowing
+613,64,64,BFSWithTailFollowing
+633,64,64,BFSWithTailFollowing
+830,64,64,BFSWithTailFollowing
+659,64,64,BFSWithTailFollowing
+767,64,64,BFSWithTailFollowing
+587,64,64,BFSWithTailFollowing
+769,64,64,BFSWithTailFollowing
+706,64,64,BFSWithTailFollowing
+629,64,64,BFSWithTailFollowing

@@ -33,4 +33,8 @@ public class SingleHamiltonianCycle extends Agent {
 		
 		return directionsToApple;
 	}
+	@Override
+	public String toString() {
+		return "SingleHamiltonianCycle";
+	}
 }

@@ -1,5 +1,6 @@
 package model.game;
 
+import com.sun.tools.javac.Main;
 import core.ApplicationFramework;
 import view.MainView;
 
@@ -71,13 +72,16 @@ public class Game {
 	private void EndGame(String notifications) {
 		System.out.println(notifications);
 		isRunning = false;
-		try {
-			PrintWriter pw = new PrintWriter(new FileWriter("src/log.txt", true));
-			pw.println(moves + "," + snake.size() + "," + (WIDTH * HEIGHT) + "," + ApplicationFramework.getInstance().getAgent());
-			pw.close();
-		}catch(IOException ex) {
-			throw new RuntimeException(ex);
+		if(notifications.equals("GAME_WON")) {
+			try {
+				PrintWriter pw = new PrintWriter(new FileWriter("src/log.txt", true));
+				pw.println(moves + "," + snake.size() + "," + (WIDTH * HEIGHT) + "," + ApplicationFramework.getInstance().getAgent());
+				pw.close();
+			}catch(IOException ex) {
+				throw new RuntimeException(ex);
+			}
 		}
+	
 	}
 	
 	public void move(Direction direction) {

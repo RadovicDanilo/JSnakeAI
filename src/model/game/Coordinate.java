@@ -12,10 +12,22 @@ public class Coordinate {
 	public Coordinate move(Direction direction) {
 		Coordinate head = new Coordinate(0, 0);
 		switch(direction) {
-			case LEFT -> head = new Coordinate(x - 1, y);
-			case RIGHT -> head = new Coordinate(x + 1, y);
-			case UP -> head = new Coordinate(x, y - 1);
-			case DOWN -> head = new Coordinate(x, y + 1);
+			case LEFT -> {
+				head = new Coordinate(x - 1, y);
+				break;
+			}
+			case RIGHT -> {
+				head = new Coordinate(x + 1, y);
+				break;
+			}
+			case UP -> {
+				head = new Coordinate(x, y - 1);
+				break;
+			}
+			case DOWN -> {
+				head = new Coordinate(x, y + 1);
+				break;
+			}
 		}
 		return head;
 	}

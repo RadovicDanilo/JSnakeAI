@@ -1,6 +1,7 @@
 package view;
 
 import core.ApplicationFramework;
+import model.agent.PertubatedHamiltonianCycle;
 import model.game.Coordinate;
 
 import javax.swing.*;
@@ -34,5 +35,6 @@ public class MyPanel extends JPanel {
 		g2d.setColor(Color.RED);
 		Rectangle rectangle = new Rectangle(apple.getX() * BLOCK_SIZE + 7, apple.getY() * BLOCK_SIZE+7, BLOCK_SIZE-14, BLOCK_SIZE-14);
 		g2d.fill(rectangle);
+		
 	}
 }
