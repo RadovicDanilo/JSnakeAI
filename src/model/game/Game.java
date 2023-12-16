@@ -71,6 +71,7 @@ public class Game {
 	}
 	
 	private void EndGame(String notifications) {
+		System.out.println("SNAKE = " + snake.size());
 		System.out.println(notifications);
 		isRunning = false;
 		if(notifications.equals("GAME_WON")) {

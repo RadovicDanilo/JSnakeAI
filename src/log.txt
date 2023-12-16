@@ -21,11 +21,8 @@
 706,64,64,BFSWithTailFollowing
 629,64,64,BFSWithTailFollowing
 
-833 ,64,64,PertubatedHamiltonianCycle
-1024,64,64,PertubatedHamiltonianCycle
-964 ,64,64,PertubatedHamiltonianCycle
-983 ,64,64,PertubatedHamiltonianCycle
-985 ,64,64,PertubatedHamiltonianCycle
-862 ,64,64,PertubatedHamiltonianCycle
-1131,64,64,PertubatedHamiltonianCycle
-1035,64,64,PertubatedHamiltonianCycle1165,64,64,PertubatedHamiltonianCycle
+
+573,64,64,PertubatedHamiltonianCycle
+726,64,64,PertubatedHamiltonianCycle
+609,64,64,PertubatedHamiltonianCycle
+652,64,64,PertubatedHamiltonianCycle

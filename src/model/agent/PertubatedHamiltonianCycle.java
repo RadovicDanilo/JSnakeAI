@@ -81,11 +81,13 @@ public class PertubatedHamiltonianCycle extends Agent {
 				int nextHeadPos = initialHamiltonianPathAsCoordinates.indexOf(nextHead);
 				int nextTailPos = initialHamiltonianPathAsCoordinates.indexOf(nextTail);
 				
-				if(
-					(nextTailPos < lastHeadPos && (nextHeadPos < nextTailPos || nextHeadPos > lastHeadPos)) ||
-						(nextHeadPos > lastHeadPos && nextHeadPos < nextTailPos)
-				
-				) {
+				if(snake.size() < getHEIGHT() * getWIDTH() / 2 && ((nextTailPos < lastHeadPos && (nextHeadPos < nextTailPos ||
+					nextHeadPos > lastHeadPos)) || (nextHeadPos > lastHeadPos && nextHeadPos < nextTailPos))) {
+					ArrayList<Direction> directionsTemp = (ArrayList<Direction>) directions.clone();
+					directionsTemp.add(direction);
+					tempListOfDirectionsToAppleTemp.add(directionsTemp);
+				}else if(snake.size() >= getHEIGHT() * getWIDTH() / 2 &&
+					(getHEIGHT() * getWIDTH() + nextHeadPos - 1) % getHEIGHT() * getWIDTH() == (getHEIGHT() * getWIDTH() + lastHeadPos) % getHEIGHT() * getWIDTH()) {
 					ArrayList<Direction> directionsTemp = (ArrayList<Direction>) directions.clone();
 					directionsTemp.add(direction);
 					tempListOfDirectionsToAppleTemp.add(directionsTemp);
@@ -125,6 +127,7 @@ public class PertubatedHamiltonianCycle extends Agent {
 	public void setInitialHamiltonianPathAsCoordinates(ArrayList<Coordinate> initialHamiltonianPathAsCoordinates) {
 		this.initialHamiltonianPathAsCoordinates = initialHamiltonianPathAsCoordinates;
 	}
+	
 	@Override
 	public String toString() {
 		return "PertubatedHamiltonianCycle";
