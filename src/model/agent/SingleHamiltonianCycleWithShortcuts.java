@@ -7,13 +7,13 @@ import model.game.Game;
 
 import java.util.ArrayList;
 
-public class PertubatedHamiltonianCycle extends Agent {
+public class SingleHamiltonianCycleWithShortcuts extends Agent {
 	private final Game game = ApplicationFramework.getInstance().getGame();
 	private ArrayList<Coordinate> snake;
 	private ArrayList<Direction> directionsToApple;
 	private ArrayList<Coordinate> initialHamiltonianPathAsCoordinates;
 	
-	public PertubatedHamiltonianCycle() {
+	public SingleHamiltonianCycleWithShortcuts() {
 		snake = game.getSnake();
 		getInitialHamiltonianPathAsCoordinateArray();
 	}
@@ -130,7 +130,7 @@ public class PertubatedHamiltonianCycle extends Agent {
 	
 	@Override
 	public String toString() {
-		return "PertubatedHamiltonianCycle";
+		return "SingleHamiltonianCycleWithShortcuts";
 	}
 }
 

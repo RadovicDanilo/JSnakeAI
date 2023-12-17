@@ -1,7 +1,6 @@
 package view;
 
 import core.ApplicationFramework;
-import model.agent.PertubatedHamiltonianCycle;
 import model.game.Coordinate;
 
 import javax.swing.*;

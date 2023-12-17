@@ -92,6 +92,15 @@ public class BFSWithTailFollowing extends Agent {
 	}
 	
 	@Override
+	public boolean isLegaMove(ArrayList<Coordinate> snakeTemp, Direction direction) {
+		Coordinate head = snakeTemp.get(snakeTemp.size() - 1).move(direction);
+		if(snakeTemp.get(0).equals(head)) {
+			return false;
+		}
+		return !(snakeTemp.contains(head) || !ApplicationFramework.getInstance().getGame().getBoard().contains(head));
+	}
+	
+	@Override
 	public ArrayList<Direction> getDirectionsToApple() {
 		return directionsToApple;
 	}

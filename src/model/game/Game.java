@@ -40,7 +40,6 @@ public class Game {
 		while(isRunning) {
 			ApplicationFramework.getInstance().getAgent().GeneratePath();
 			if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size() == 0) {
-				System.out.println("ZERO DIRECTION MAAAN");
 				EndGame("GAME_LOST");
 				break;
 			}

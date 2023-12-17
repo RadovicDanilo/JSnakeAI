@@ -1,12 +1,10 @@
 import core.ApplicationFramework;
-import model.agent.BFSWithTailFollowing;
-import model.agent.PertubatedHamiltonianCycle;
-import model.agent.SingleHamiltonianCycle;
+import model.agent.SingleHamiltonianCycleWithShortcuts;
 
 public class Main {
 	public static void main(String[] args) {
 		ApplicationFramework main = ApplicationFramework.getInstance();
-		main.setAgent(new PertubatedHamiltonianCycle());
+		main.setAgent(new SingleHamiltonianCycleWithShortcuts());
 		main.initialize();
 	}
 }
