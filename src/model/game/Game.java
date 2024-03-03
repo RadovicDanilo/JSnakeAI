@@ -39,7 +39,7 @@ public class Game {
 	public void Run() {
 		while(isRunning) {
 			ApplicationFramework.getInstance().getAgent().GeneratePath();
-			if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().size() == 0) {
+			if(ApplicationFramework.getInstance().getAgent().getDirectionsToApple().isEmpty()) {
 				EndGame("GAME_LOST");
 				break;
 			}

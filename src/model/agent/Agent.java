@@ -17,7 +17,7 @@ public abstract class Agent {
 	
 	public void Wait() {
 		try {
-			Thread.sleep(50);
+			Thread.sleep(5);
 		}catch(InterruptedException e) {
 			throw new RuntimeException(e);
 		}
@@ -25,10 +25,7 @@ public abstract class Agent {
 	
 	public boolean isLegaMove(ArrayList<Coordinate> snakeTemp, Direction direction) {
 		Coordinate head = snakeTemp.get(snakeTemp.size() - 1).move(direction);
-		if(snakeTemp.get(0).equals(head)) {
-			return false;
-		}
-		return !(snakeTemp.contains(head) || !ApplicationFramework.getInstance().getGame().getBoard().contains(head));
+		return !((snakeTemp.contains(head) && !snakeTemp.get(0).equals(head)) || !ApplicationFramework.getInstance().getGame().getBoard().contains(head));
 	}
 	
 	public ArrayList<Coordinate> useDirectionsOnSnake(ArrayList<Coordinate> snakeTemp, ArrayList<Direction> directionArrayList) {

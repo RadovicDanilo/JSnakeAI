@@ -1,0 +1,8 @@
+653,64,64,SingleHamiltonianCycleWithShortcuts
+539,64,64,SingleHamiltonianCycleWithShortcuts
+730,64,64,SingleHamiltonianCycleWithShortcuts
+598,64,64,SingleHamiltonianCycleWithShortcuts
+566,64,64,SingleHamiltonianCycleWithShortcuts
+557,64,64,SingleHamiltonianCycleWithShortcuts
+800,64,64,SingleHamiltonianCycleWithShortcuts
+570,64,64,SingleHamiltonianCycleWithShortcuts

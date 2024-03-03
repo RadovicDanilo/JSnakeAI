@@ -39,11 +39,6 @@ public class SingleHamiltonianCycleWithShortcuts extends Agent {
 	@Override
 	public void GeneratePath() {
 		snake = game.getSnake();
-		System.out.println("APPLE " + initialHamiltonianPathAsCoordinates.indexOf(game.getAppleCoordinate()));
-		System.out.println("HEAD " + initialHamiltonianPathAsCoordinates.indexOf(game.getHeadCoordinate()));
-		System.out.println("TAIL " + initialHamiltonianPathAsCoordinates.indexOf(game.getSnake().get(0)));
-		System.out.println();
-		
 		this.directionsToApple = findPathBFS();
 	}
 	
@@ -59,8 +54,8 @@ public class SingleHamiltonianCycleWithShortcuts extends Agent {
 				}
 			}
 			ArrayList<ArrayList<Direction>> tempNewListOfDirection = newListOfDirections(listOfDirectionsToApple, snake);
-			if(tempNewListOfDirection.size() == 0) {
-				return listOfDirectionsToApple.get(0);
+			if(tempNewListOfDirection.isEmpty()) {
+				return new ArrayList<>();
 			}
 			listOfDirectionsToApple = tempNewListOfDirection;
 		}
