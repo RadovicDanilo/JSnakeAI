@@ -9,3 +9,5 @@ Just like the first one but it takes shortcuts when it can<br>
 3. BFSWithTailFollowing<br>
 Always guarantees that it can follow its tail<br>
 ![myfile](https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)
+<br>
+![myfile](https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)
