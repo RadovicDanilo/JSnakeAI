@@ -13,4 +13,4 @@ Always guarantees that it can follow its tail<br>
 a
 <br>
 <br>
-![alt-text]([link](https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)
+![](https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)https://github.com/RadovicDanilo/JSnakeAI/tree/master/gifs/3.gif)
