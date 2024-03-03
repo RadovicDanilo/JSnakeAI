@@ -8,16 +8,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-//        System.out.println("Choose which agent you want to use.");
-//        System.out.println("1. SingleHamiltonianCycle");
-//        System.out.println("2. SingleHamiltonianCycleWithShortcuts");
-//        System.out.println("3. BFSWithTailFollowing");
-//
-//        Scanner sc = new Scanner(System.in);
-//        int n = sc.nextInt();
+        System.out.println("Choose which agent you want to use.");
+        System.out.println("1. SingleHamiltonianCycle");
+        System.out.println("2. SingleHamiltonianCycleWithShortcuts");
+        System.out.println("3. BFSWithTailFollowing");
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
         ApplicationFramework main = ApplicationFramework.getInstance();
-        switch (2) {
+        switch (n) {
             case 1:
                 main.setAgent(new SingleHamiltonianCycle());
                 break;
